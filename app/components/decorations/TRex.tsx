@@ -1,7 +1,8 @@
+"use client";
 import Image from "next/image";
 
 export interface TrexProps {
-  state: "RIGHT" | "LEFT" | "JUMP";
+  state: "RIGHT" | "LEFT";
 }
 
 export default function TRex({ state }: TrexProps) {

@@ -1,3 +1,4 @@
+"use client";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
 
@@ -19,10 +20,14 @@ export default function Cloud({
   const position = useTransform(scrollYProgress, [0, 1], [from, end]);
   return (
     <motion.div
-      className={`fixed top-${top} left-${left} z-10`}
-      style={{ x: position }}
+      className={`fixed z-10`}
+      style={{
+        x: position,
+        top: `${top}%`,
+        left: `${left}%`,
+      }}
     >
-      <Image src="/images/cloud.png" alt="Cloud" width={120} height={120} />
+      <Image src="/images/cloud.png" alt="Cloud" width={120} height={36} />
     </motion.div>
   );
 }

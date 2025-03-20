@@ -21,7 +21,7 @@ export default function Skill() {
 
   const techStack = ["REACT", "NEXT.JS", "SVELTE", "TYPESCRIPT"];
   const skillRef = useRef<HTMLElement>(null);
-  const isInView = useInView(skillRef, { amount: 0.7 });
+  const isInView = useInView(skillRef, { amount: 0.76 });
   const [isMouseHover, setIsMouseHover] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ export default function Skill() {
       className="w-full h-[100vh] flex justify-center items-start z-100 relative"
       ref={skillRef}
     >
-      <div className="border-3 border-black rounded-xl w-3/4 min-h-7/10">
+      <div className="border-3 border-black rounded-xl w-3/4 min-h-[70vh]">
         <motion.div
           className="w-full h-full relative"
           style={{
@@ -161,7 +161,10 @@ export default function Skill() {
               <div className="text-2xl text-center">TECH STACK</div>
               <div className="w-full grid grid-cols-2 gap-4 max-w-[400px]">
                 {techStack.map((tech) => (
-                  <div className="border-white w-full border-4 flex justify-center items-center rounded-full text-xl md:text-2xl px-4 cursor-default">
+                  <div
+                    key={tech}
+                    className="border-white w-full border-4 flex justify-center items-center rounded-full text-xl md:text-2xl px-4 cursor-default"
+                  >
                     {tech}
                   </div>
                 ))}

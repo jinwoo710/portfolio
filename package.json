@@ -6,9 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npm run build && wrangler pages deploy out"
   },
   "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.10",
     "framer-motion": "^12.5.0",
     "next": "15.2.3",
     "react": "^19.0.0",

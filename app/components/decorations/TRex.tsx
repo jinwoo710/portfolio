@@ -9,7 +9,7 @@ export default function TRex({ state }: TrexProps) {
   return (
     <div className="fixed left-1/3 bottom-32 z-40 transform -translate-x-1/2">
       <Image
-        src={`/images/rex_${state}.png`}
+        src={`/images/rex_${state.toLocaleLowerCase()}.png`}
         alt="T-Rex"
         width={80}
         height={80}

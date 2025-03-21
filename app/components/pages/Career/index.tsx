@@ -1,20 +1,15 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import CareerItem from "./components/CareerItem";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
-import Ptera from "../../decorations/Ptera";
 
-export interface CareerProps {
-  characterState: number;
-}
-
-export default function Career({ characterState }: CareerProps) {
+export default function Career() {
   const careerRef = useRef<HTMLElement>(null);
   const isInView = useInView(careerRef, { amount: 0.4 });
-  const isActivityInView = useInView(careerRef, { amount: 0.8 });
+  const isActivityInView = useInView(careerRef, { amount: 0.6 });
 
   return (
     <section
-      className="w-full h-[100vh] flex justify-center items-start z-100 relative"
+      className="w-full h-[100vh] max-w-[1000px] mx-auto flex justify-center items-start z-100 relative"
       ref={careerRef}
     >
       <div className="w-3/4 min-h-1/2 flex flex-col space-y-4">
@@ -100,7 +95,7 @@ export default function Career({ characterState }: CareerProps) {
               company="굳굳맨게임즈"
               startDate="2018.10"
               endDate="2020.02"
-              position="게임 개발 회사 창업"
+              position="게임 개발 스타트업 설립"
               isLeft
             />
           </motion.div>

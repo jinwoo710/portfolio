@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useScroll } from "framer-motion";
 import TRex from "./decorations/TRex";
 import Cloud from "./decorations/Cloud";
 import Ground from "./decorations/Ground";
@@ -9,6 +9,7 @@ import Title from "./pages/Title";
 import Skill from "./pages/Skill";
 import Career from "./pages/Career";
 import Cactus from "./decorations/Cactus";
+import Portfolios from "./pages/Portfolios";
 
 const Portfolio = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -106,7 +107,8 @@ const Portfolio = () => {
       <Ground goal={-1000} scrollYProgress={scrollYProgress} />
       <Title />
       <Skill />
-      <Career characterState={characterState} />
+      <Career />
+      <Portfolios />
     </div>
   );
 };

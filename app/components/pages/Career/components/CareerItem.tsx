@@ -16,7 +16,7 @@ export default function CareerItem({
   return (
     <div className={`${isLeft ? "ml-10" : "mr-10"} flex flex-col`}>
       <div className="space-x-4">
-        <span className="font-bold text-xl md:text-2xl whitespace-nowrap">
+        <span className="font-bold text-xl text-gray-800 md:text-2xl whitespace-nowrap">
           {company}
         </span>
         <span className="whitespace-nowrap">

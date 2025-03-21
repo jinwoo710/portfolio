@@ -50,7 +50,7 @@ export default function Title() {
             }}
             style={{ opacity: scrollTextOpacity }}
           >
-            <span>scroll down</span>
+            <span>▼ scroll down ▼</span>
           </motion.div>
         </>
       )}

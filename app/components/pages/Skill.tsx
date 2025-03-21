@@ -1,5 +1,5 @@
 "use client";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
@@ -21,15 +21,40 @@ export default function Skill() {
 
   const techStack = ["REACT", "NEXT.JS", "SVELTE", "TYPESCRIPT"];
   const skillRef = useRef<HTMLElement>(null);
-  const isInView = useInView(skillRef, { amount: 0.76 });
+
+  const [isInView, setIsInView] = useState(false);
+  const [flag, setFlag] = useState(false);
+
+  const { scrollYProgress } = useScroll({
+    target: skillRef,
+    offset: ["start end", "end start"],
+  });
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (value) => {
+      if (value >= 0.4 && !flag) {
+        setIsInView(true);
+        setFlag(true);
+      } else if (value < 0.4 && flag) {
+        setIsInView(false);
+        setFlag(false);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [scrollYProgress, flag]);
+
   const [isMouseHover, setIsMouseHover] = useState(false);
 
   return (
     <section
-      className="w-full h-[100vh] flex justify-center items-start z-100 relative"
+      className="w-full h-[100vh] max-w-[1000px] mx-auto flex justify-center items-start z-100 relative"
       ref={skillRef}
     >
-      <div className="border-3 border-black rounded-xl w-3/4 min-h-[70vh]">
+      <div
+        className="border-3 border-black rounded-xl w-3/4 min-h-[70vh] bg-black"
+        style={{ backgroundColor: "rgba(0,0,0,0.2)" }}
+      >
         <motion.div
           className="w-full h-full relative"
           style={{
@@ -90,7 +115,7 @@ export default function Skill() {
                 animate={{ opacity: [0.2, 1, 0.2] }}
                 className="text-gray-800"
               >
-                A _ _
+                J A _
               </motion.div>
               <div className="text-gray-800">10</div>
             </div>
@@ -104,6 +129,19 @@ export default function Skill() {
                 </React.Fragment>
               ))}
             </div>
+            <motion.div
+              transition={{
+                repeat: Infinity,
+                repeatType: "loop",
+                delay: 1,
+              }}
+              initial={{ opacity: 0.2 }}
+              animate={{ opacity: [0.2, 1, 0.2] }}
+              className="w-full flex-col items-center space-x-4 flex justify-center mt-14 text-4xl font-bold"
+            >
+              PLEASE INSERT COIN
+              <span className="text-xl font-bold mx-auto">COIN : 0</span>
+            </motion.div>
           </motion.div>
         </motion.div>
         <motion.div

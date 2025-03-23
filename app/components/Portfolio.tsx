@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { useScroll } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import TRex from "./decorations/TRex";
 import Cloud from "./decorations/Cloud";
 import Ground from "./decorations/Ground";
@@ -45,9 +45,14 @@ const Portfolio = () => {
           "linear-gradient(to bottom, #f7f7f7, #d0d0d0 25%, #a0a0a0 50%, #505050 75%, #202020 100%)",
       }}
     >
-      <div className="fixed top-4 right-4 z-50  p-2 rounded-md text-2xl font-bold text-gray-800">
+      <motion.div
+        animate={{
+          color: scrollCount > 60 ? "#fff" : "#333",
+        }}
+        className="fixed top-4 right-4 z-50  p-2 rounded-md text-2xl font-bold"
+      >
         SCORE: {scrollCount * 10}
-      </div>
+      </motion.div>
       <TRex state={characterState === 1 ? "RIGHT" : "LEFT"} />
       <Cactus
         left={80}

@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Portfolios() {
   const portfolioRef = useRef<HTMLElement>(null);
   const [selectedStage, setSelectedStage] = useState(1);
-  const isInView = useInView(portfolioRef, { amount: 0.4 });
+  const isInView = useInView(portfolioRef, { amount: 0.6 });
   const ITEMS: {
     index: number;
     title: string;
@@ -82,7 +82,7 @@ export default function Portfolios() {
                   hidden: { height: 0 },
                   visible: { height: "auto" },
                 }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: i * 0.2 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <div className="w-full h-[100px] sm:h-40 relative">
                   <Image

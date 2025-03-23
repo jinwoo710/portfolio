@@ -7,9 +7,10 @@ import Cloud from "./decorations/Cloud";
 import Ground from "./decorations/Ground";
 import Title from "./pages/Title";
 import Skill from "./pages/Skill";
-import Career from "./pages/Career";
+import Career from "./pages/Career/index";
 import Cactus from "./decorations/Cactus";
 import Portfolios from "./pages/Portfolios";
+import Ending from "./pages/Ending";
 
 const Portfolio = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -109,6 +110,7 @@ const Portfolio = () => {
       <Skill />
       <Career />
       <Portfolios />
+      <Ending />
     </div>
   );
 };

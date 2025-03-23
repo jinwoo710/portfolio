@@ -34,54 +34,97 @@ export default function CareerItem({
 
   return (
     <motion.div
-      className="border-l-4 border-white pl-10 mb-8 relative"
+      className="pl-10 mb-12 relative"
       initial={{ opacity: 0, x: -50 }}
       animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
       transition={{ duration: 0.5, delay: index * 0.2 }}
     >
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-white rounded-full"></div>
+
       <motion.div
-        className="absolute -left-6 w-12 h-12 bg-white rounded-full flex items-center justify-center"
+        className={`absolute -left-5 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center p-1`}
         initial={{ scale: 0 }}
         animate={isInView ? { scale: 1 } : { scale: 0 }}
-        transition={{ duration: 0.3, delay: index * 0.2 + 0.1 }}
+        transition={{
+          duration: 0.4,
+          delay: index * 0.2 + 0.1,
+          type: "spring",
+          stiffness: 260,
+          damping: 20,
+        }}
       >
-        <Image src={`/images/${logo}`} alt="flag" width={30} height={30} />
+        <Image
+          src={`/images/${logo}`}
+          alt={company}
+          width={24}
+          height={24}
+          className="rounded-full"
+        />
       </motion.div>
 
-      <div className="mb-3">
-        <h3 className="text-2xl font-bold">{company}</h3>
-        <div className="flex flex-wrap text-lg gap-x-2">
-          <span>{department}</span>
-          <span>·</span>
-          <span>{position}</span>
+      <motion.div
+        className="mb-4 bg-gradient-to-r from-gray-900 to-transparent p-4 rounded-lg shadow-md"
+        initial={{ opacity: 0, y: -10 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -10 }}
+        transition={{ duration: 0.3, delay: index * 0.2 + 0.2 }}
+      >
+        <div className="flex items-start justify-between flex-wrap">
+          <div>
+            <div className="text-2xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+              {company}
+            </div>
+            <div className="flex flex-wrap text-lg gap-x-2 text-gray-300">
+              <span>{department}</span>
+              <span>·</span>
+              <span className="font-medium">{position}</span>
+            </div>
+          </div>
+          <div className="bg-gray-800 px-3 py-1 rounded-full text-white text-sm font-medium shadow-lg">
+            {duration}
+          </div>
         </div>
-        <div className="text-gray-300">
-          <span>{period}</span>
-          <span className="ml-2">({duration})</span>
+        <div className="text-gray-400 mt-1 text-sm font-medium tracking-wide">
+          {period}
         </div>
-      </div>
+      </motion.div>
 
-      <div className="space-y-4 mt-4">
+      <div className="space-y-4 mt-6">
         {projects.map((project, index) => (
           <motion.div
             key={index}
-            className="bg-white bg-opacity-10 rounded-lg p-4 cursor-pointer"
-            onClick={() =>
-              setExpandedProject(expandedProject === index ? null : index)
-            }
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg overflow-hidden shadow-lg border border-gray-700 "
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{
+              duration: 0.4,
+              delay: index * 0.2 + 0.3 + index * 0.1,
+            }}
+            whileHover={{
+              y: -4,
+              transition: { duration: 0.3 },
+            }}
           >
-            <div className="flex justify-between items-center">
-              <h4 className="text-xl font-medium">{project.title}</h4>
+            <div
+              className="p-4 cursor-pointer flex justify-between items-center"
+              onClick={() =>
+                setExpandedProject(expandedProject === index ? null : index)
+              }
+            >
+              <div className="flex items-center gap-3">
+                <div className={`w-2 h-10 rounded-full`}></div>
+                <div className="text-xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  {project.title}
+                </div>
+              </div>
               <motion.div
                 animate={{ rotate: expandedProject === index ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-700"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
+                  width="18"
+                  height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -91,29 +134,63 @@ export default function CareerItem({
                 </svg>
               </motion.div>
             </div>
-
             <motion.div
               initial={false}
               animate={{
                 height: expandedProject === index ? "auto" : 0,
                 opacity: expandedProject === index ? 1 : 0,
-                marginTop: expandedProject === index ? 16 : 0,
-                padding: expandedProject === index ? 16 : 0,
               }}
               transition={{ duration: 0.3 }}
-              className="overflow-hidden border border-black rounded-lg bg-gray-100"
+              className="overflow-hidden"
             >
-              <p className="mb-3">{project.description}</p>
-              {project.achievements && (
-                <ul className="list-disc list-inside space-y-1 mb-3">
-                  {project.achievements.map((achievement, i) => (
-                    <li key={i}>{achievement}</li>
-                  ))}
-                </ul>
-              )}
-              <div className="bg-black text-white p-2 rounded">
-                <span className="font-medium">기술 스택:</span>{" "}
-                {project.techStack}
+              <div className="p-5 border-t border-gray-700 bg-black bg-opacity-30">
+                <p className="mb-4 text-gray-300 leading-relaxed">
+                  {project.description}
+                </p>
+
+                {project.achievements && (
+                  <div className="mb-5">
+                    <div className="text-sm uppercase tracking-wider text-gray-400 mb-2 font-medium">
+                      주요 성과
+                    </div>
+                    <ul className="space-y-2">
+                      {project.achievements.map((achievement, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <div className="mt-1">
+                            <svg
+                              width="14"
+                              height="14"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                            >
+                              <path
+                                d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"
+                                fill="white"
+                              />
+                            </svg>
+                          </div>
+                          <span className="text-gray-200">{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                <div className="bg-gradient-to-r from-gray-800 to-black p-3 rounded-lg">
+                  <div className="text-sm uppercase tracking-wider text-gray-400 mb-2 font-medium">
+                    기술 스택
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.split(",").map((tech, i) => (
+                      <span
+                        key={i}
+                        className={` bg-opacity-90 px-3 py-1 rounded-full text-white text-sm`}
+                      >
+                        {tech.trim()}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>

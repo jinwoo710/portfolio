@@ -250,9 +250,9 @@ export default function Skill() {
               </div>
 
               <div className="flex-1 w-full">
-                <h2 className="text-2xl text-center mb-4 font-bold">
+                <div className="text-2xl text-center mb-4 font-bold">
                   TECH STACK
-                </h2>
+                </div>
 
                 <div className="flex justify-center mb-6 gap-2 flex-wrap">
                   {(

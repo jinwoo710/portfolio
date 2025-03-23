@@ -77,9 +77,9 @@ export default function Ending() {
         }
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-600 mb-2">
+        <div className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-yellow-600 mb-2">
           GAME CLEAR
-        </h1>
+        </div>
         <motion.div
           className="text-lg md:text-xl mt-4 mb-8"
           initial={{ opacity: 0 }}

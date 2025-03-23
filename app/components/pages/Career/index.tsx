@@ -14,35 +14,45 @@ export default function Career() {
       className="w-full min-h-screen py-20 flex flex-col justify-start items-center z-100 relative text-gray-800"
     >
       <motion.div
-        className="text-4xl mb-12 text-center"
-        initial={{ opacity: 0, y: -20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.5 }}
+        className="mb-16 text-center relative z-10"
+        initial={{ opacity: 0, y: -30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
+        transition={{ duration: 0.6 }}
       >
-        CAREER JOURNEY
+        <div className="text-5xl font-bold mb-2 text-white">CAREER JOURNEY</div>
       </motion.div>
 
-      <motion.div
-        className="max-w-4xl w-full px-4"
-        initial={{ opacity: 0 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        {careerData.map((career, index) => (
-          <CareerItem
-            key={index}
-            logo={career.logo}
-            company={career.company}
-            position={career.position}
-            department={career.department}
-            period={career.period}
-            duration={career.duration}
-            projects={career.projects}
-            isInView={isInView}
-            index={index}
-          />
-        ))}
-      </motion.div>
+      <div className="max-w-5xl w-full px-4 sm:px-6 relative">
+        <motion.div
+          className="w-full relative z-10"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.2,
+              },
+            },
+          }}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+        >
+          {careerData.map((career, index) => (
+            <CareerItem
+              key={index}
+              logo={career.logo}
+              company={career.company}
+              position={career.position}
+              department={career.department}
+              period={career.period}
+              duration={career.duration}
+              projects={career.projects}
+              isInView={isInView}
+              index={index}
+            />
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 }
@@ -70,7 +80,7 @@ const careerData = [
       {
         title: "쇼핑몰 사이트 신규 개발",
         description:
-          "기존의 신경심리 도구 쇼핑몰과 언어 검사 도구 쇼핑몰을 하나로 통합한 새로운 쇼핑몰을 개발하며 전체 프론트엔드 구축을 주도했습니다.",
+          "기존의 신경심리 도구 쇼핑몰과 언어 검사 도구 쇼핑몰을 하나로 통합한 새로운 쇼핑몰을 개발하며, 전체 프론트엔드 구축을 주도했습니다.",
         techStack: "SvelteKit, TypeScript, TailwindCSS",
         achievements: [
           "다양한 디바이스에서 접근이 가능하도록 태블릿 및 모바일을 고려한 반응형 레이아웃으로 구현",

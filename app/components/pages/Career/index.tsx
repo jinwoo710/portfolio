@@ -93,7 +93,7 @@ const careerData = [
         title: "아동용 발음 평가 검사(APAC-R) 서비스 개발",
         description:
           "기존 종이 기반 검사를 웹 기반 시스템으로 전환하는 작업을 수행했습니다. 종이 검사의 한계와 비효율성을 해결하기 위해 검사부터 결과 분석까지의 프론트엔드 기획 및 개발에 참여했습니다.",
-        techStack: "SvelteKit, TypeScript, TailwindCSS",
+        techStack: "React, Tailwind CSS, Typescript, React-Query",
         achievements: [
           "입력된 아동 데이터의 음소를 자동으로 분석하는 알고리즘 개발에 참여",
           "복잡한 분석 데이터 입력을 직관적인 UI로 기획 및 구현",
@@ -104,7 +104,7 @@ const careerData = [
         title: "(구) 쇼핑몰 마이그레이션",
         description:
           "PHP 코드 베이스로 짜여진 웹을 Laravel을 통한 마이그레이션을 진행했습니다.",
-        techStack: "Laravel, PHP, Tailwind CSS, Typescript",
+        techStack: "PHP, Tailwind CSS, Typescript",
         achievements: [
           "개발 효율성과 코드 일관성 향상을 위해 재사용 가능한 UI 컴포넌트 라이브러리를 설계하고 구현",
           "마이그레이션 과정에서 기존에 구현되지 않았던 워크숍 페이지를 새롭게 개발하여 동영상 강의 시청 및 자료 다운로드 기능을 구현",
@@ -135,7 +135,8 @@ const careerData = [
         title: "검사 통합 솔루션 사이트 신규 개발",
         description:
           "치매, 아동 발음 검사 등 다양한 임상 검사를 종합적으로 관리할 수 있는 병원 통합 솔루션 개발에 참여하였습니다.",
-        techStack: "Tailwind CSS, Typescript, SvelteKit, DaisyUI, StoryBook",
+        techStack:
+          "React, Tailwind CSS, Typescript, DaisyUI, React-Query, Redux",
         achievements: [
           "의료진이 여러 검사 도구들의 진행 상황과 결과지를 직관적으로 파악할 수 있는 대시보드를 설계하고 구현",
           "환자 정보와 관련 검사 이력을 통합적으로 추적하고 관리할 수 있는 페이지를 개발",
